@@ -87,7 +87,7 @@ const Interface = () => {
      };
 
      return (
-          <div className="min-h-screen w-screen content-center justify-center py-10 lg:p-5">
+          <div className="p-5 min-h-screen w-screen content-center justify-center py-10 lg:p-5">
                <div className="flex place-content-center items-center flex-col-reverse p-4 lg:space-x-10 lg:flex-row shadow-md w-full lg:w-3/4 mx-auto rounded-3xl">
                     <div className="flex place-content-center items-center justify-center rounded-l-md mt-5 lg:w-1/2">
                          <div className="w-full sm:shadowBox border-2 p-5 rounded-md">
@@ -205,18 +205,14 @@ const Interface = () => {
                                         />
                                    </div>
 
-                                   <button
-                                        type="button"
-                                        onClick={handleDownload}
-                                        className="block w-full bg-purple-700 text-white rounded-md py-2 mt-4"
-                                   >
+                                   <button type="button" onClick={handleDownload} className="block w-full bg-purple-700 text-white rounded-md py-2 mt-4">
                                         Generate & Download QR Code
                                    </button>
                               </form>
                          </div>
                     </div>
 
-                    <div className="flex bg-white flex-wrap content-center justify-center rounded-r-md mx-auto w-fit shadow-2xl rounded-4xl">
+                    <div className="flex bg-white flex-wrap content-center justify-center rounded-r-md mx-auto w-40 h-40 shadow-2xl rounded-4xl">
                          {qrCodeUrl ? (
                               <canvas
                                    ref={canvasRef}
