@@ -24,7 +24,7 @@ const Interface = () => {
           }
 
           if (dimension < 300 || dimension > 500) {
-               setDimension(450)
+               setDimension(500)
           }
 
           const qrCode = new QRCodeStyling({
