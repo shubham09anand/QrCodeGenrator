@@ -25,7 +25,7 @@ const QrCodeGenerator = () => {
             },
             imageOptions: {
                 crossOrigin: "anonymous",
-                margin: 20
+                margin: 10
             }
         });
 
