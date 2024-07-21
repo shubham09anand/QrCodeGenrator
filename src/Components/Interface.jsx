@@ -212,7 +212,7 @@ const Interface = () => {
                          </div>
                     </div>
 
-                    <div className="flex bg-white flex-wrap content-center justify-center rounded-r-md mx-auto shadow-2xl rounded-4xl">
+                    <div className="flex -translate-x-20 md:translate-x-10 scale-50 md:scale-75 bg-white flex-wrap content-center justify-center rounded-r-md mx-auto shadow-2xl rounded-4xl">
                          {qrCodeUrl ? (
                               <canvas
                                    ref={canvasRef}
