@@ -219,6 +219,9 @@ const Interface = () => {
                     </div>
 
                     <div className="flex -translate-x-20 md:translate-x-10 scale-50 md:scale-75 bg-white flex-wrap content-center justify-center rounded-r-md mx-auto shadow-2xl rounded-4xl">
+                         <div className="w-full h-full rounded-r-md flex items-center justify-center">
+                                   <span className="w-full text-center">QR Code appear here,start creating Your QR Ocde</span>
+                              </div>
                          {qrCodeUrl ? (
                               <canvas
                                    ref={canvasRef}
