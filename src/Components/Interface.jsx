@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import QRCodeStyling from 'qr-code-styling';
 import logo from "../Assets/logoSVG.svg";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Interface = () => {
      const image = logo;
@@ -15,14 +15,17 @@ const Interface = () => {
      const canvasRef = useRef(null);
 
      const handleGenerateQRCode = () => {
+          const now = new Date();
+          const currentTime = now.toLocaleTimeString();
+
           if (!data.trim()) {
                return;
           }
-          
+
           if (dimension < 300 || dimension > 500) {
                setDimension(450)
           }
-          
+
           const qrCode = new QRCodeStyling({
                width: parseInt(dimension, 10),
                height: parseInt(dimension, 10),
@@ -50,7 +53,7 @@ const Interface = () => {
                const canvas = canvasRef.current;
                if (!canvas) {
                     return;
-                }
+               }
                const ctx = canvas.getContext('2d');
                const img = new Image();
                img.src = url;
@@ -83,7 +86,7 @@ const Interface = () => {
           const canvas = canvasRef.current;
           const link = document.createElement('a');
           link.href = canvas.toDataURL('image/png');
-          link.download = 'qr_code.png';
+          link.download = `qr_code_${currentTime}.png`;
           link.click();
      };
 
