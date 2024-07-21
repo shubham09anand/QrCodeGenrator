@@ -47,7 +47,7 @@ const QrCode = () => {
              <div ref={qrRef}>
                <QRCode value={data} size={256} />
              </div>
-             <div onClick={downloadQRCode} className="text-white text-center bg-blue-600 mt-5 p-2 rounded-sm">
+             <div onClick={downloadQRCode} className="active:opacity-70 text-white text-center bg-blue-600 mt-5 p-2 rounded-sm">
                Download QR Code as PNG
              </div>
            </div>
