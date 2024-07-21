@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import QRCodeStyling from 'qr-code-styling';
 import logo from "../Assets/logoSVG.svg";
+import {Link} from 'react-router-dom';
 
 const Interface = () => {
      const image = logo;
@@ -87,10 +88,11 @@ const Interface = () => {
      };
 
      return (
-          <div className="min-h-screen w-screen content-center justify-center py-10 lg:p-5">
-               <div className="flex place-content-center items-center flex-col-reverse p-1 lg:space-x-10 lg:flex-row shadow-md w-full lg:w-3/4 mx-auto rounded-3xl">
-                    <div className="flex place-content-center items-center justify-center rounded-l-md mt-5 lg:w-1/2">
+          <div className="min-h-screen w-screen content-center justify-center lg:p-5">
+               <div className="-translate-y-20 md:translate-y-0 flex place-content-center items-center flex-col-reverse p-1 lg:space-x lg:flex-row shadow-md w-full lg:w-3/4 mx-auto rounded-3xl">
+                    <div className="-translate-y-20 md:translate-y-0 flex place-content-center items-center justify-center rounded-l-md mt-5 lg:w-1/2">
                          <div className="w-full sm:shadowBox border-2 p-5 rounded-md">
+                              <Link to='/NormalQRCode' className='text-blue-500'>Genrate Normal Link</Link>
                               <div className="text-black font-semibold text-3xl">QR Code Generator</div>
                               <form className="mt-4">
                                    <div className="mb-3">

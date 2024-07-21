@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
 import QRCode from 'qrcode.react';
+import "../App.css";
+import {Link} from 'react-router-dom';
 
 const QrCode = () => {
      const [data, setData] = useState('');
@@ -30,26 +32,31 @@ const QrCode = () => {
      };
    
      return (
-       <div className="container">
-         <h1>QR Code Generator</h1>
+       <div className="text-wxl font-semibold mt-5 space-y-3 w-full md:w-1/2 mx-auto flex flex-col place-content-center items-center">
+         <h1 className='text-2xl font-semibold'>QR Code Generator</h1>
          <input
            type="text"
            value={data}
            onChange={(e) => setData(e.target.value)}
            placeholder="Enter data"
-           className="input"
+           className="text-gray-600 border-2 w-4/5 md:w-1/2 p-1 border-gray-500 rounded-sm outline-none focus:bg-gray-100"
          />
-         {data && (
+         {data ? (
            <div>
-             <h2>Generated QR Code:</h2>
+             <div className='text-xl font-semibold my-2 text-center'>Generated QR Code:</div>
              <div ref={qrRef}>
                <QRCode value={data} size={256} />
              </div>
-             <button onClick={downloadQRCode} className="download-button">
+             <div onClick={downloadQRCode} className="text-white text-center bg-blue-600 mt-5 p-2 rounded-sm">
                Download QR Code as PNG
-             </button>
+             </div>
            </div>
-         )}
+         ):
+          <div className='font-extralight h-40 w-4/5 md:w-1/2 text-center pt-5  bg-gray-200'>
+            Your QR Genrate Here. Enter the text in text Box first.  <br /> OR <br />
+            <Link to="/" className='text-blue-400'> click here to gerate more intractive QR code</Link>
+          </div>
+         }
        </div>
      )
 }
