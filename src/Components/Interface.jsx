@@ -1,18 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import QRCodeStyling from 'qr-code-styling';
-import logo from "../Assets/logoSVG.svg"
+import logo from "../Assets/logoSVG.svg";
 
 const Interface = () => {
      const image = logo;
-     const [dimension, setDimension] = useState('600');
+     const padding = '20';
+     const [dimension, setDimension] = useState('450');
      const [dotOption, setDotOption] = useState('rounded');
      const [color, setColor] = useState('#000000');
      const [backgroundColor, setBackgroundColor] = useState('#ffffff');
-     const [data, setData] = useState('Entert the text/url/info');
+     const [data, setData] = useState('Enter the text/url/info');
      const [qrCodeUrl, setQrCodeUrl] = useState('');
-     const [qrCodeDownload, setQrCodeDownload] = useState(null)
- 
-     const handleGenerateQRCode = () => { 
+     const canvasRef = useRef(null);
+
+     const handleGenerateQRCode = () => {
+          if (!data.trim()) {
+               return;
+          }
+          
+          if (dimension < 200) {
+               setDimension(450)
+          }
+          
           const qrCode = new QRCodeStyling({
                width: parseInt(dimension, 10),
                height: parseInt(dimension, 10),
@@ -36,36 +45,52 @@ const Interface = () => {
                const svgBlob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
                const url = URL.createObjectURL(svgBlob);
                setQrCodeUrl(url);
+
+               const canvas = canvasRef.current;
+               if (!canvas) {
+                    return;
+                }
+               const ctx = canvas.getContext('2d');
+               const img = new Image();
+               img.src = url;
+               img.onload = () => {
+                    const paddedWidth = parseInt(dimension, 10) + parseInt(padding, 10) * 2;
+                    const paddedHeight = parseInt(dimension, 10) + parseInt(padding, 10) * 2;
+                    canvas.width = paddedWidth;
+                    canvas.height = paddedHeight;
+                    ctx.fillStyle = backgroundColor;
+                    ctx.fillRect(0, 0, paddedWidth, paddedHeight);
+                    ctx.drawImage(img, parseInt(padding, 10), parseInt(padding, 10), parseInt(dimension, 10), parseInt(dimension, 10));
+               };
           });
-          setQrCodeDownload(qrCode)
+
      };
 
      useEffect(() => {
           handleGenerateQRCode();
-     }, [dimension, dotOption, color, backgroundColor, data, image]);
+     }, [dimension, dotOption, color, backgroundColor, data, image, padding]);
 
      const handleDownload = () => {
           if (dimension < 50 || dimension > 2500) {
-               setDimension(600)
-               return
+               setDimension(600);
+               return;
           }
           if (!data.trim()) {
-               setData("Entert the text/url/info");
-               return
+               setData("Enter the text/url/info");
+               return;
           }
-          if (qrCodeDownload) {
-               qrCodeDownload.download({
-                    name: 'qr_code',
-                    extension: 'jpeg'
-               });
-          }
+          const canvas = canvasRef.current;
+          const link = document.createElement('a');
+          link.href = canvas.toDataURL('image/png');
+          link.download = 'qr_code.png';
+          link.click();
      };
 
      return (
           <div className="min-h-screen w-screen content-center justify-center py-10 lg:p-5">
-               <div className="flex flex-col-reverse shadow-md w-full lg:w-2/3 mx-auto rounded-3xl">
-                    <div className="flex content-center justify-center rounded-l-md p-5 lg:w-1/2">
-                         <div className="w-full shadowBox p-5 bg-gray-50 rounded-3xl">
+               <div className="flex place-content-center items-center flex-col-reverse p-4 lg:space-x-10 lg:flex-row shadow-md w-full lg:w-3/4 mx-auto rounded-3xl">
+                    <div className="flex place-content-center items-center justify-center rounded-l-md mt-5 lg:w-1/2">
+                         <div className="w-full sm:shadowBox border-2 p-5 rounded-md">
                               <div className="text-black font-semibold text-3xl">QR Code Generator</div>
                               <form className="mt-4">
                                    <div className="mb-3">
@@ -185,18 +210,17 @@ const Interface = () => {
                                         onClick={handleDownload}
                                         className="block w-full bg-purple-700 text-white rounded-md py-2 mt-4"
                                    >
-                                        Generate QR Code
+                                        Generate & Download QR Code
                                    </button>
                               </form>
                          </div>
                     </div>
 
-                    <div className="flex bg-white flex-wrap content-center justify-center rounded-r-md mx-auto w-1/2">
+                    <div className="flex bg-white flex-wrap content-center justify-center rounded-r-md mx-auto w-fit shadow-2xl rounded-4xl">
                          {qrCodeUrl ? (
-                              <img
-                                   className={`w-[${dimension}] h-[${dimension}] bg-center bg-no-repeat bg-cover rounded-r-md`}
-                                   src={qrCodeUrl}
-                                   alt="QR Code"
+                              <canvas
+                                   ref={canvasRef}
+                                   className={`w-[${parseInt(dimension, 10) + parseInt(padding, 10) * 2}px] h-[${parseInt(dimension, 10) + parseInt(padding, 10) * 2}px] bg-center rounded-3xl bg-no-repeat bg-cover rounded-r-md`}
                               />
                          ) : (
                               <div className="w-full h-full rounded-r-md flex items-center justify-center">
