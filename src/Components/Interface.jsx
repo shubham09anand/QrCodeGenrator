@@ -28,7 +28,7 @@ const Interface = () => {
                },
                imageOptions: {
                     crossOrigin: 'anonymous',
-                    margin: 20
+                    margin: 10,
                }
           });
 
@@ -62,10 +62,10 @@ const Interface = () => {
      };
 
      return (
-          <div className="min-h-screen w-screen content-center justify-center py-10 p-5">
-               <div className="flex shadow-md w-2/3 mx-auto rounded-3xl">
-                    <div className="flex flex-wrap content-center justify-center rounded-l-md w-1/2">
-                         <div className="w-full p-5 bg-gray-50 shadow-2xl rounded-3xl">
+          <div className="min-h-screen w-screen content-center justify-center py-10 lg:p-5">
+               <div className="flex flex-col-reverse shadow-md w-full lg:w-2/3 mx-auto rounded-3xl">
+                    <div className="flex content-center justify-center rounded-l-md p-5 lg:w-1/2">
+                         <div className="w-full shadowBox p-5 bg-gray-50 rounded-3xl">
                               <div className="text-black font-semibold text-3xl">QR Code Generator</div>
                               <form className="mt-4">
                                    <div className="mb-3">
