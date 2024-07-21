@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Interface = () => {
      const image = logo;
-     const padding = '10';
+     const padding = '20';
      const [dimension, setDimension] = useState('500');
      const [dotOption, setDotOption] = useState('rounded');
      const [color, setColor] = useState('#000000');
@@ -14,9 +14,10 @@ const Interface = () => {
      const [qrCodeUrl, setQrCodeUrl] = useState('');
      const canvasRef = useRef(null);
 
+     const now = new Date();
+     const currentTime = now.toLocaleTimeString();
+
      const handleGenerateQRCode = () => {
-          const now = new Date();
-          const currentTime = now.toLocaleTimeString();
 
           if (!data.trim()) {
                return;
