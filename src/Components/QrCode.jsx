@@ -47,12 +47,12 @@ const QrCode = () => {
              <div ref={qrRef}>
                <QRCode value={data} size={256} />
              </div>
-             <div onClick={downloadQRCode} className="active:opacity-70 text-white text-center bg-blue-600 mt-5 p-2 rounded-sm">
+             <div onClick={downloadQRCode} className="active:opacity-70 cursor-pointer text-white text-center bg-blue-600 mt-5 p-2 rounded-sm">
                Download QR Code as PNG
              </div>
            </div>
          ):
-          <div className='font-extralight h-40 w-4/5 md:w-1/2 text-center pt-5  bg-gray-200'>
+          <div className='font-extralight h-40 w-4/5 md:w-1/2 text-center pt-5 bg-gray-200'>
             Your QR Genrate Here. Enter the text in text Box first.  <br /> OR <br />
             <Link to="/" className='text-blue-400'> click here to gerate more intractive QR code</Link>
           </div>
