@@ -4,8 +4,8 @@ import logo from "../Assets/logoSVG.svg";
 
 const Interface = () => {
      const image = logo;
-     const padding = '20';
-     const [dimension, setDimension] = useState('300');
+     const padding = '10';
+     const [dimension, setDimension] = useState('500');
      const [dotOption, setDotOption] = useState('rounded');
      const [color, setColor] = useState('#000000');
      const [backgroundColor, setBackgroundColor] = useState('#ffffff');
@@ -18,7 +18,7 @@ const Interface = () => {
                return;
           }
           
-          if (dimension < 300 || dimension > 600) {
+          if (dimension < 300 || dimension > 500) {
                setDimension(450)
           }
           
