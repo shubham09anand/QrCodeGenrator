@@ -23,8 +23,8 @@ const Interface = () => {
                return;
           }
 
-          if (dimension < 300 || dimension > 500) {
-               setDimension(500)
+          if (dimension < 300 || dimension > 600) {
+               setDimension(600)
           }
 
           const qrCode = new QRCodeStyling({
@@ -225,7 +225,7 @@ const Interface = () => {
                          {qrCodeUrl ? (
                               <canvas
                                    ref={canvasRef}
-                                   className={`w-[${parseInt(dimension, 10) + parseInt(padding, 10) * 2}px] h-[${parseInt(dimension, 10) + parseInt(padding, 10) * 2}px] bg-center rounded-3xl bg-no-repeat bg-cover rounded-r-md`}
+                                   className={`w-[${parseInt(dimension, 10) + parseInt(padding, 10) * 2}px] h-[${parseInt(dimension, 10) + parseInt(padding, 10) * 2}px] bg-center rounded-3xl bg-no-repeat bg-cover`}
                               />
                          ) : (
                               <div className="w-full h-full rounded-r-md flex items-center justify-center">
