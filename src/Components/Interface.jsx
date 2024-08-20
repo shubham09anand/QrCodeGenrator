@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import QRCodeStyling from 'qr-code-styling';
 import logo from "../Assets/logoSVG.svg";
+import dummy from "../Assets/qrCode.jpg";
 import { Link } from 'react-router-dom';
 
 const Interface = () => {
      const image = logo;
      const padding = '20';
-     const [dimension, setDimension] = useState('500');
+     const [dimension, setDimension] = useState(500);
      const [dotOption, setDotOption] = useState('rounded');
      const [color, setColor] = useState('#000000');
      const [backgroundColor, setBackgroundColor] = useState('#ffffff');
@@ -242,7 +243,7 @@ const Interface = () => {
 
                               {qrCodeUrl ? (
                                    <canvas
-                                        ref={canvasRef}
+                                        ref={canvasRef || dummy}
                                         className={`w-[${parseInt(dimension, 10) + parseInt(padding, 10) * 2}px] h-[${parseInt(dimension, 10) + parseInt(padding, 10) * 2}px] bg-center rounded-3xl bg-no-repeat bg-cover  lg:mt-0`}
                                    />
                               ) : (
@@ -254,7 +255,7 @@ const Interface = () => {
                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="size-9">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
                                    </svg>
-                                   
+
                                    Generate & Download QR Code
                               </button>
                          </div>
