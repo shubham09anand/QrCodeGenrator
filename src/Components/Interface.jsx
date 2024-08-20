@@ -243,7 +243,7 @@ const Interface = () => {
 
                               {qrCodeUrl ? (
                                    <canvas
-                                        ref={canvasRef || dummy}
+                                        ref={canvasRef}
                                         className={`w-[${parseInt(dimension, 10) + parseInt(padding, 10) * 2}px] h-[${parseInt(dimension, 10) + parseInt(padding, 10) * 2}px] bg-center rounded-3xl bg-no-repeat bg-cover  lg:mt-0`}
                                    />
                               ) : (
