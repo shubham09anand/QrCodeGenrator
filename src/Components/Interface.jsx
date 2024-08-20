@@ -75,7 +75,7 @@ const Interface = () => {
           handleGenerateQRCode();
           // eslint-disable-next-line
      }, [dimension, dotOption, color, backgroundColor, data, image, padding]);
-// eslint-disable-next-line
+     // eslint-disable-next-line
      const handleDownload = () => {
           if (dimension < 50 || dimension > 2500) {
                setDimension(600);
@@ -135,7 +135,7 @@ const Interface = () => {
                                         />
                                    </div>
                                    <div>
-                                        <label className="mb-2 block text-xl font-semibold">Dimension</label>
+                                        <label className="mb-2 block text-xl font-semibold mt-4">Dimension</label>
                                         <input
                                              type="number"
                                              placeholder="Enter the dimension (size x size)"
@@ -145,8 +145,8 @@ const Interface = () => {
                                         />
                                    </div>
 
+                                   <div className="mb-2 block text-xl font-semibold">Dot Options</div>
                                    <div className="mb-5 flex flex-wrap">
-                                        <div className="mb-2 block text-xl font-semibold">Dot Options</div>
                                         <div className="flex items-center m-2">
                                              <input
                                                   id="dotOption-rounded"
