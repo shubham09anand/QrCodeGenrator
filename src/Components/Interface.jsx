@@ -4,7 +4,7 @@ import logo from "../Assets/logoSVG.svg";
 import { Link } from 'react-router-dom';
 
 const Interface = () => {
-     const image = logo;
+     const [image, setImage] = useState(logo);
      const padding = '20';
      const [start, setStart] = useState(false);
      const [userLogoImage, setUserLogoImage] = useState(null);
@@ -87,7 +87,7 @@ const Interface = () => {
      useEffect(() => {
           handleGenerateQRCode();
           // eslint-disable-next-line
-     }, [dimension, dotOption, color, backgroundColor, data, image, padding, userLogoImage, start]);
+     }, [dimension, dotOption, color, backgroundColor, data, image, padding, userLogoImage, start, image]);
 
      const handleDownload = () => {
 
@@ -135,7 +135,7 @@ const Interface = () => {
 
                               <div className="w-full sm:shadowBox p-5 rounded-md">
 
-                                   <Link to='/NormalQRCode' className='text-blue mb-2 pl-1'>Genrate Normal QR Code</Link>
+                                   <Link to='/NormalQRCode' className='text-blue mb-2 pl-1 text-white'>Genrate Normal QR Code</Link>
 
                                    <div>
                                         <label className="mb-5 block font-semibold text-4xl lg:text-5xl text-blue-950">Enter your text</label>
@@ -144,7 +144,7 @@ const Interface = () => {
 
                                    <div className="my-5">
                                         <div className='text-black pl-2 py-2 text-lg font-semibold'>Upload Your photo/logo/symbol which will be placed at center of QR code </div>
-                                        <div id="image-preview" className="backdrop-blur-xl py-1 w-fit lg:w-full mb-4 items-center text-center cursor-pointer">
+                                        <div id="image-preview" className="flex backdrop-blur-xl py-1 w-fit lg:w-full mb-4 items-center text-center cursor-pointer">
                                              <input onChange={(e) => setUserLogoImage(e.target.files)} id="upload" type="file" className="hidden" accept="image/*" />
                                              <label htmlFor="upload" className="flex place-content-center items-center cursor-pointer">
                                                   <div className='mr-2 flex place-content-center items-center w-fit h-fit  p-2 rounded-md'>
@@ -159,6 +159,9 @@ const Interface = () => {
                                                        </div>
                                                        <h5 className="text-lg font-bold tracking-tight ml-3">{userLogoImage === null ? 'Upload picture' : 'Re-upload'}</h5>
                                                   </div>
+
+                                                  <span id="filename" className="text-gray-500 bg-gray-200 z-50"></span>
+                                             </label>
                                                   {userLogoImage && (
                                                        <div className='relative mt-2'>
                                                             <img className='w-16 h-10 rounded-sm' src={userLogoImage ? URL.createObjectURL(userLogoImage[0]) : null} alt="imgErr" />
@@ -172,17 +175,14 @@ const Interface = () => {
                                                        <div className="text-white font-thin text-lg w-32 sm:w-40 md:w-80 truncate pl-5">{userLogoImage[0] ? `${userLogoImage[0].name}` : 'No file selected'}</div>
                                                   )}
                                                   
-                                                  {userLogoImage === null && (
+                                                  {image !== null && userLogoImage === null && (
                                                        <div className='relative'>
-                                                            <img className='w-16 h-10 rounded-sm' src={logo} alt="imgErr" />
-                                                            <svg onClick={() => setUserLogoImage(null)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="size-5 absolute -top-2 -right-2 bg-white rounded-full cursor-pointer">
+                                                            <img className='w-16 h-10 rounded-sm' src={image} alt="imgErr" />
+                                                            <svg onClick={() => setImage(null)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="size-5 absolute -top-2 -right-2 bg-white rounded-full cursor-pointer">
                                                                  <path strokeLinecap="round" strokeLinejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                                             </svg>
                                                        </div>
                                                   )}
-
-                                                  <span id="filename" className="text-gray-500 bg-gray-200 z-50"></span>
-                                             </label>
                                         </div>
                                    </div>
 
