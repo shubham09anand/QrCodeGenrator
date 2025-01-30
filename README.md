@@ -1,5 +1,5 @@
 
-# **PDFCollaborate**  
+# **QR-Code Genrator**  
 
 A brief guide on how to start and deploy this project.  
 
