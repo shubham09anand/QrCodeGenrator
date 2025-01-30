@@ -5,7 +5,7 @@ A brief guide on how to start and deploy this project.
 
 ---
 
-## **Authors**  
+## **Author**  
 
 [![Portfolio](https://img.shields.io/badge/My_Portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://shubham09anand.in/)  
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/subham09anand/)  
