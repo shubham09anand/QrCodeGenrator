@@ -59,7 +59,7 @@ docker run -p 3000:3000 -d shubham09anand/qr_code_generator
    ```
 3. Build the Docker image:  
    ```bash
-   docker build -t shubham09anand/qr_code_generator .
+   docker build -t <image_name> .
    ```
 4. Run the Docker container:  
    ```bash
@@ -72,10 +72,3 @@ docker run -p 3000:3000 -d shubham09anand/qr_code_generator
 - Open your browser and visit: [http://127.0.0.1:3000](http://127.0.0.1:3000)  
 
 ---
-
-### **Changes & Fixes:**  
-✅ Fixed typos (**Genrator → Generator**, **Collabrate → Collaborate**)  
-✅ Corrected **Docker image name** (`qr_code_genrator` → `qr_code_generator`)  
-✅ Fixed **repository clone command format**  
-✅ Improved **clarity and consistency** in instructions  
-✅ Ensured **uniform formatting**  
